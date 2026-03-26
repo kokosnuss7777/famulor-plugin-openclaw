@@ -1,0 +1,18 @@
+{
+  "name": "famulor-skill",
+  "description": "Famulor skill for creating and managing assistants, campaigns, and messaging workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "bekservice"
+  },
+  "homepage": "https://github.com/bekservice/Famulor-Skill",
+  "repository": "https://github.com/bekservice/Famulor-Skill",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "famulor",
+    "assistant",
+    "campaign",
+    "automation"
+  ]
+}

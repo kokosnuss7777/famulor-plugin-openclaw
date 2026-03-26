@@ -1,0 +1,21 @@
+{
+  "name": "famulor-skill",
+  "displayName": "Famulor.io Skill",
+  "description": "Skill set for building and managing assistants, campaigns, messaging, and automation on famulor.io",
+  "version": "1.0.0",
+  "author": {
+    "name": "bekservice"
+  },
+  "homepage": "https://github.com/bekservice/Famulor-Skill",
+  "repository": "https://github.com/bekservice/Famulor-Skill",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "famulor",
+    "automation",
+    "assistants",
+    "voice-bot",
+    "whatsapp",
+    "sms"
+  ]
+}
