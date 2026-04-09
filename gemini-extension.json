@@ -1,6 +1,0 @@
-{
-  "name": "famulor-skill",
-  "description": "Famulor skill for assistants, campaigns, messaging, and automation workflows",
-  "version": "1.0.0",
-  "contextFileName": "GEMINI.md"
-}

@@ -1,48 +1,32 @@
 # Famulor OpenClaw Plugin
 
-Vollständige Integration der [Famulor AI-Telefonplattform](https://famulor.de) in OpenClaw.
+Plugin für die [Famulor AI-Telefonplattform](https://famulor.de) in [OpenClaw](https://openclaw.ai).
 
 ## Features
 
-- **Assistant Management**: Erstellen, aktualisieren, auflisten von KI-Telefonassistenten
-- **Lookup**: Sprachen, Stimmen, Modelle, Telefonnummern
-- **Knowledge Bases**: Wissensdatenbanken erstellen und befüllen
-- **Webhooks**: Webhooks aktivieren für Callbacks
-- **Testing**: Testanrufe starten und Nachrichten senden
+- **17 API Tools** für Assistant-Management, Lookups, Knowledge Bases und Webhooks
+- **Native TypeScript** Integration in OpenClaw
+- **Branchenspezifisches Wissen** in `references/nischen_intelligenz.md`
 
 ## Installation
 
-### Option 1: Git Clone (Entwickler)
-
 ```bash
-# Clone in OpenClaw extensions Ordner
-git clone https://github.com/bekservice/Famulor-Skill.git ~/.openclaw/extensions/Famulor-Skill
+# Clone
+git clone https://github.com/kokosnuss7777/famulor-plugin-openclaw.git ~/.openclaw/extensions/famulor
 
 # Dependencies installieren
-cd ~/.openclaw/extensions/Famulor-Skill
-npm install
-```
-
-### Option 2: Symlink (bestehend aus Skills)
-
-```bash
-# Falls bereits in ~/.openclaw/skills/Famulor-Skill
-ln -s ~/.openclaw/skills/Famulor-Skill ~/.openclaw/extensions/Famulor-Skill
-cd ~/.openclaw/extensions/Famulor-Skill
+cd ~/.openclaw/extensions/famulor
 npm install
 ```
 
 ## Konfiguration
 
-### API Key
-
-Setze den Famulor API Key als Environment Variable:
-
 ```bash
-export FAMULOR_API_KEY="dein-api-key-hier"
+# API Key setzen
+export FAMULOR_API_KEY="dein-api-key"
 ```
 
-Oder füge ihn in der OpenClaw Config hinzu (`~/.openclaw/openclaw.json`):
+Oder in `~/.openclaw/openclaw.json`:
 
 ```json
 {
@@ -51,7 +35,7 @@ Oder füge ihn in der OpenClaw Config hinzu (`~/.openclaw/openclaw.json`):
       "famulor": {
         "enabled": true,
         "config": {
-          "apiKey": "dein-api-key-hier"
+          "apiKey": "dein-api-key"
         }
       }
     }
@@ -59,9 +43,9 @@ Oder füge ihn in der OpenClaw Config hinzu (`~/.openclaw/openclaw.json`):
 }
 ```
 
-API Key erhältst du unter: https://app.famulor.de → API Keys
+API Key: https://app.famulor.de → API Keys
 
-## Verfügbare Tools
+## Tools
 
 ### Assistant Management
 
@@ -89,7 +73,7 @@ API Key erhältst du unter: https://app.famulor.de → API Keys
 |------|--------------|
 | `famulor_create_knowledgebase` | Wissensdatenbank erstellen |
 | `famulor_list_knowledgebases` | Alle Wissensdatenbanken |
-| `famulor_create_document` | Dokument hinzufügen (URL/Links/Text) |
+| `famulor_create_document` | Dokument hinzufügen |
 
 ### Webhooks & Testing
 
@@ -100,40 +84,32 @@ API Key erhältst du unter: https://app.famulor.de → API Keys
 | `famulor_create_test_conversation` | Testanruf starten |
 | `famulor_send_test_message` | Testnachricht senden |
 
-## Nutzung
-
-Nach der Installation und Konfiguration sind alle Tools automatisch im Chat verfügbar:
-
-```
-Du: Erstelle einen neuen Assistenten für Friseursalon Weber
-Agent: [nutzt famulor_create_assistant tool]
-```
-
 ## Struktur
 
 ```
-Famulor-Skill/
-├── openclaw.plugin.json    # Plugin Manifest
-├── index.ts                # Plugin Entry Point
+famulor-plugin-openclaw/
+├── index.ts                    # Plugin Entry Point
+├── openclaw.plugin.json        # Plugin Manifest
+├── package.json
+├── tsconfig.json
 ├── src/
-│   ├── api-client.ts       # Famulor API Client
-│   └── tools/              # Tool Registrierungen
+│   ├── api-client.ts           # TypeScript API Client
+│   └── tools/
 │       ├── assistant-tools.ts
 │       ├── lookup-tools.ts
 │       ├── knowledge-tools.ts
 │       └── webhook-tools.ts
-├── SKILL.md                # Onboarding Guide (Agent)
-└── references/             # Branchenwissen
+├── references/
+│   └── nischen_intelligenz.md  # Branchenwissen
+└── scripts/
+    └── famulor_client.py       # Python Client (Reference)
 ```
 
-## Weiterentwicklung
+## Python Client
 
-Für einen PR an dieses Repository:
+Das Original `famulor_client.py` wird als Reference aus dem [Original Repo](https://github.com/bekservice/Famulor-Skill) bereitgehalten.
 
-1. Fork erstellen
-2. Änderungen in `src/` machen
-3. TypeScript kompilieren: `npm run typecheck`
-4. PR öffnen
+Bei API-Updates im Original Repo: `scripts/famulor_client.py` aktualisieren.
 
 ## Lizenz
 
