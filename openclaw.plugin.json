@@ -1,0 +1,45 @@
+{
+  "id": "famulor",
+  "name": "Famulor.io",
+  "description": "KI-Telefonassistenten erstellen und verwalten für die Famulor AI-Plattform. Onboarding, Assistant-Management, Wissensdatenbanken, Webhooks.",
+  "version": "1.0.0",
+  "author": {
+    "name": "bekservice",
+    "url": "https://github.com/bekservice/Famulor-Skill"
+  },
+  "repository": "https://github.com/bekservice/Famulor-Skill",
+  "license": "MIT",
+  "keywords": [
+    "famulor",
+    "voice-bot",
+    "telefonassistent",
+    "ki-assistent",
+    "onboarding"
+  ],
+  "openclaw": {
+    "extensions": ["./index.ts"],
+    "compat": {
+      "pluginApi": ">=2026.3.24-beta.2",
+      "minGatewayVersion": "2026.3.24-beta.2"
+    },
+    "build": {
+      "openclawVersion": "2026.3.24-beta.2",
+      "pluginSdkVersion": "2026.3.24-beta.2"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "description": "Famulor API Key. Erhältlich unter https://app.famulor.de → API Keys. Alternativ FAMULOR_API_KEY env var.",
+        "envVar": "FAMULOR_API_KEY"
+      },
+      "baseUrl": {
+        "type": "string",
+        "default": "https://app.famulor.de/api",
+        "description": "Famulor API Base URL"
+      }
+    }
+  }
+}
