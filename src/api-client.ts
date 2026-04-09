@@ -17,7 +17,7 @@ export interface AssistantPayload {
   timezone?: string;
   initial_message?: string;
   system_prompt: string;
-  llm_model_id?: number;
+  llm_model?: string;
   allow_interruptions?: boolean;
   fillers?: boolean;
   enable_noise_cancellation?: boolean;
@@ -94,7 +94,7 @@ export class FamulorApiClient {
         return { status: true } as ApiResponse<T>;
       }
 
-      const json = await response.json();
+      const json: any = await response.json();
 
       if (!response.ok) {
         return {
