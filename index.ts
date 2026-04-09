@@ -17,7 +17,7 @@ import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
 import { createAssistantTool, updateAssistantTool, listAssistantsTool, getAssistantTool } from "./src/tools/assistant-tools";
 import { getLanguagesTool, getVoicesTool, getModelsTool, getPhoneNumbersTool, getSynthesizerProvidersTool, getTranscriberProvidersTool } from "./src/tools/lookup-tools";
 import { createKnowledgebaseTool, listKnowledgebasesTool, createDocumentTool } from "./src/tools/knowledge-tools";
-import { enableWebhookTool, enableConversationEndedWebhookTool, createTestConversationTool, sendTestMessageTool } from "./src/tools/webhook-tools";
+import { enableWebhookTool, enableConversationEndedWebhookTool, createTestConversationTool, sendTestMessageTool, enableWebhookWithMccTool, createMccLeadFromCallTool } from "./src/tools/webhook-tools";
 
 // Plugin definition
 const plugin = definePluginEntry({
@@ -150,7 +150,22 @@ const plugin = definePluginEntry({
       execute: sendTestMessageTool.execute as any,
     });
 
-    console.log("[famulor] Plugin geladen. 15 Tools registriert.");
+    // ── MCC Integration ──────────────────────────────────────────────
+    api.registerTool({
+      name: enableWebhookWithMccTool.name,
+      description: enableWebhookWithMccTool.description,
+      parameters: enableWebhookWithMccTool.parameters as any,
+      execute: enableWebhookWithMccTool.execute as any,
+    });
+
+    api.registerTool({
+      name: createMccLeadFromCallTool.name,
+      description: createMccLeadFromCallTool.description,
+      parameters: createMccLeadFromCallTool.parameters as any,
+      execute: createMccLeadFromCallTool.execute as any,
+    });
+
+    console.log("[famulor] Plugin geladen. 17 Tools registriert.");
   },
 });
 
