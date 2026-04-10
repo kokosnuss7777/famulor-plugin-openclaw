@@ -27,6 +27,15 @@ const plugin = definePluginEntry({
   version: "1.0.0",
   
   register(api) {
+    // Inject config into process.env so getConfigFromEnv() in tools can find it
+    const config = (api as any).config;
+    if (config?.apiKey && !process.env.FAMULOR_API_KEY) {
+      process.env.FAMULOR_API_KEY = config.apiKey;
+    }
+    if (config?.baseUrl && !process.env.FAMULOR_BASE_URL) {
+      process.env.FAMULOR_BASE_URL = config.baseUrl;
+    }
+
     // ── Assistant Management ────────────────────────────────────────────
     api.registerTool({
       name: createAssistantTool.name,
